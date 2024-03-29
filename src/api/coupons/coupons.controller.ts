@@ -24,16 +24,16 @@ export class CouponsController {
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     const coupon = await this.couponsService.findOne(id);
-    if (coupon.statusCode !== HttpStatus.ACCEPTED) {
+    if (coupon.statusCode !== HttpStatus.OK) {
       throw new HttpException(coupon, coupon.statusCode);
     }
-    return ;
+    return coupon;
   }
 
   @Patch(':id')
   async update(@Param('id', ParseIntPipe) id: number, @Body() updateCouponDto: UpdateCouponDto) {
     const response = await this.couponsService.update(id, updateCouponDto);
-    if (response.statusCode !== HttpStatus.ACCEPTED) {
+    if (response.statusCode !== HttpStatus.OK) {
       throw new HttpException(response, response.statusCode);
     }
     return response;
