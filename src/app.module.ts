@@ -13,7 +13,7 @@ import { Coupon } from '@api/coupons/entities/coupon.entity';
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      timezone: '-05:00',
+      timezone: 'UTC-5',
       host: process.env.DB_HOST,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USER,
